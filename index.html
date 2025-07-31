@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gerador ABNT</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-book"></i> Gerador ABNT</h2>
+            <p>Crie a Capa, Folha de Rosto e Sumário do seu trabalho acadêmico.</p>
+        </div>
+        
+        <form id="abnt-form">
+            <div class="form-section">
+                <h4><i class="fas fa-university"></i> Instituição e Curso</h4>
+                <div class="form-group">
+                    <label for="instituicao">Nome da Instituição (Ex: Universidade Estadual Paulista – UNESP): *</label>
+                    <input type="text" id="instituicao" required value="UNIVERSIDADE ESTADUAL PAULISTA – UNESP" />
+                </div>
+                <div class="form-group">
+                    <label for="faculdade">Faculdade ou Instituto (Ex: Faculdade de Ciências e Letras - Campus de Araraquara): *</label>
+                    <input type="text" id="faculdade" required placeholder="Nome da Faculdade ou Instituto - Campus de Cidade" />
+                </div>
+                 <div class="form-group">
+                    <label for="curso">Nome do Curso: *</label>
+                    <input type="text" id="curso" required placeholder="Ex: Engenharia de Software" />
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4><i class="fas fa-file-alt"></i> Detalhes do Trabalho</h4>
+                <div class="form-group">
+                    <label for="autor">Nome Completo do Autor(a): *</label>
+                    <input type="text" id="autor" required placeholder="Ex: Joana da Silva Santos" />
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Título do Trabalho: *</label>
+                    <input type="text" id="titulo" required placeholder="Ex: A APLICAÇÃO DE INTELIGÊNCIA ARTIFICIAL NA EDUCAÇÃO" />
+                </div>
+                <div class="form-group">
+                    <label for="subtitulo">Subtítulo (opcional):</label>
+                    <input type="text" id="subtitulo" placeholder="Ex: Um estudo sobre novas tecnologias" />
+                </div>
+                <div class="form-group">
+                    <label for="local">Local (Cidade da defesa): *</label>
+                    <input type="text" id="local" required value="Salvador" />
+                </div>
+                <div class="form-group">
+                    <label for="ano">Ano da Defesa: *</label>
+                    <input type="number" id="ano" required value="2025" min="1900" max="2100" />
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4><i class="fas fa-stamp"></i> Folha de Rosto</h4>
+                 <div class="form-group">
+                    <label for="tipo_trabalho">Tipo do Trabalho: *</label>
+                    <input type="text" id="tipo_trabalho" required placeholder="Ex: Tese de Doutorado, Dissertação de Mestrado, TCC" />
+                </div>
+                <div class="form-group">
+                    <label for="grau_academico">Grau Acadêmico Pretendido: *</label>
+                    <input type="text" id="grau_academico" required placeholder="Ex: Doutor(a), Mestre(a), Bacharel(a)" />
+                </div>
+                 <div class="form-group">
+                    <label for="area_concentracao">Área de Concentração (opcional):</label>
+                    <input type="text" id="area_concentracao" placeholder="Ex: Inteligência Artificial" />
+                </div>
+                <div class="form-group">
+                    <label for="orientador">Nome do Orientador(a): *</label>
+                    <input type="text" id="orientador" required placeholder="Ex: Prof. Dr. Carlos Pereira" />
+                </div>
+                <div class="form-group">
+                    <label for="coorientador">Nome do Coorientador(a) (opcional):</label>
+                    <input type="text" id="coorientador" placeholder="Ex: Profa. Dra. Ana Beatriz Santos" />
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4><i class="fas fa-list-ol"></i> Conteúdo do Sumário</h4>
+                <div class="form-group">
+                    <label for="sumario-conteudo">Itens do Sumário (um por linha):</label>
+                    <textarea id="sumario-conteudo" rows="10" placeholder="Exemplos:&#x0a;INTRODUÇÃO;15&#x0a;1 DESENVOLVIMENTO;16&#x0a;1.1 Objetivos Específicos;18&#x0a;2 CONCLUSÃO;22&#x0a;REFERÊNCIAS;23&#x0a;APÊNDICE A - TÍTULO;28"></textarea>
+                    <small>Formato: TÍTULO;PÁGINA. A numeração (ou a falta dela) define o estilo e o recuo.</small>
+                </div>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit"><i class="fas fa-cogs"></i> Gerar Elementos</button>
+                <button type="button" id="btn-imprimir"><i class="fas fa-print"></i> Imprimir / Salvar PDF</button>
+                <button type="button" id="btn-reset"><i class="fas fa-redo"></i> Limpar Formulário</button>
+            </div>
+        </form>
+    </aside>
+
+    <main class="content">
+        <div class="preview-container">
+            <div id="capa-output" class="pagina-a4"></div>
+            <div id="folha-rosto-output" class="pagina-a4"></div>
+            <div id="sumario-output" class="pagina-a4"></div>
+        </div>
+    </main>
+
+    <div id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>
